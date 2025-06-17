@@ -1,230 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kush Man Shrestha - Portfolio</title>
-  <link rel="icon" href="kush-photo.png">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kush Man Shrestha | Portfolio</title>
+  <style>
+    /* --- Global Reset and Styling --- */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      line-height: 1.6;
+      min-height: 100vh;
+      scroll-behavior: smooth;
+    }
+    a {
+      color: #1db954;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* --- Container --- */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      background: #222;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      margin-bottom: 4rem;
+    }
+
+    /* --- Animated Hero Section --- */
+    header {
+      height: 80vh;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.2em;
+      background: linear-gradient(90deg, #00ffc8, #007eff, #00ffc8);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: gradientSlide 6s ease infinite;
+    }
+    header h2 {
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: #a0f0ff;
+      margin-bottom: 1em;
+      opacity: 0.85;
+    }
+    header .btn {
+      padding: 0.8rem 2rem;
+      border: none;
+      background: #00ffc8;
+      color: #121212;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,255,200,0.4);
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      user-select: none;
+    }
+    header .btn:hover {
+      background: #007eff;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0,126,255,0.7);
+    }
+
+    @keyframes gradientSlide {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    /* Animated underline for heading */
+    header h1::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #00ffc8;
+      margin: 1rem auto 0;
+      border-radius: 2px;
+      animation: underlineGrow 2s infinite alternate;
+    }
+    @keyframes underlineGrow {
+      0% { width: 0; opacity: 0;}
+      100% { width: 60px; opacity: 1;}
+    }
+
+    /* --- CV Section Styling --- */
+    section.cv {
+      background: #121212;
+      color: #ddd;
+      padding: 2rem 1rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: 10px;
+      box-shadow: 0 0 15px #111;
+      margin-bottom: 3rem;
+    }
+    section.cv h3 {
+      color: #00ffc8;
+      margin-bottom: 0.5rem;
+      border-bottom: 2px solid #00ffc8;
+      padding-bottom: 0.2rem;
+    }
+    section.cv p, section.cv ul {
+      margin-bottom: 1.2rem;
+    }
+    section.cv ul {
+      list-style: inside disc;
+      margin-left: 1rem;
+    }
+    section.cv ul li {
+      margin-bottom: 0.4rem;
+    }
+    .contact-info {
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    .contact-info p {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Download CV Button */
+    .download-btn {
+      display: inline-block;
+      background: #00ffc8;
+      color: #121212;
+      padding: 0.8rem 2rem;
+      border-radius: 50px;
+      font-weight: 700;
+      box-shadow: 0 5px 15px rgba(0,255,200,0.5);
+      transition: background 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      user-select: none;
+      margin: 2rem auto 0;
+      display: block;
+      width: max-content;
+      text-align: center;
+    }
+    .download-btn:hover {
+      background: #007eff;
+      color: #fff;
+      box-shadow: 0 10px 30px rgba(0,126,255,0.7);
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2.5rem;
+      }
+      header h2 {
+        font-size: 1.1rem;
+      }
+      .container {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <div class="intro">
-    <h4>Kush Man Shrestha</h4>
-    <div></div>
-    <h4 class="timer">0%</h4>
-  </div>
 
-  <div class="cursor"></div>
+  <!-- Animated Hero Section -->
+  <header>
+    <h1>Kush Man Shrestha</h1>
+    <h2>Software Quality Assurance Engineer & Project Coordinator</h2>
+    <button class="btn" onclick="document.getElementById('cv-section').scrollIntoView({behavior: 'smooth'});">
+      View My CV
+    </button>
+  </header>
 
-  <div class="nav from-top-1">
-    <h3 class="from-top-1-ele underline">Kush Man Shrestha</h3>
-    <a class="from-top-1-ele menu-btn underline" href="#">MENU+</a>
-  </div>
-
-  <div class="main" id="main">
-    <!-- Hero Section (Cynthia Style) -->
-    <div class="hero">
-      <div class="heading">
-        <h1 class="from-btm-ele"><span>QUALITY</span></h1>
-        <h1 class="secondh1 from-btm-ele"><span>ASSURANCE</span></h1>
-        <h1 class="secondh1 from-btm-ele"><span>ENGINEER</span></h1>
-        <h5 class="from-btm-ele">BASED IN KATHMANDU</h5>
+  <!-- CV Section -->
+  <main class="container" id="cv-section">
+    <section class="cv">
+      <div class="contact-info">
+        <p><strong>Address:</strong> Chokhachai Galli, Ward No. 24, Indrachowk, Kathmandu, Nepal</p>
+        <p><strong>Mobile:</strong> (+977) 9849-527999</p>
+        <p><strong>Email:</strong> <a href="mailto:shresthakush1996@gmail.com">shresthakush1996@gmail.com</a></p>
+        <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kush-man-shrestha-/" target="_blank" rel="noopener">linkedin.com/in/kush-man-shrestha-</a></p>
       </div>
-      <div class="small-headings">
-        <h3 class="from-top-ele">AVAILABLE FOR FULL-TIME ROLES</h3>
-        <h3 class="from-top-ele"><a class="underline" href="kush-cv.pdf" download>DOWNLOAD MY CV</a></h3>
-      </div>
-    </div>
 
-    <!-- Simple CV-Like Section -->
-    <section class="cv-section" id="summary">
-      <h2>Professional Summary</h2>
-      <p>Detail-oriented Software Quality Assurance Engineer with over 3 years of experience in software testing and project coordination. Skilled in Black/White Box testing, usability, performance, and product reliability.</p>
-    </section>
+      <h3>Professional Summary</h3>
+      <p>Detail-oriented Software Quality Assurance Engineer with 3+ years of experience in software testing and project coordination. Experienced in managing projects, leading teams, and improving software quality through rigorous testing methodologies.</p>
 
-    <section class="cv-section" id="skills">
-      <h2>Key Skills</h2>
+      <h3>Work Experience</h3>
       <ul>
-        <li>Testing & QA: Black Box, White Box, Regression, UAT</li>
-        <li>Tools: Git, Figma, InVision, Excel, Slack</li>
-        <li>Soft Skills: Communication, PM, Team Collaboration</li>
-        <li>Others: Requirement Gathering, Documentation, ML Basics</li>
+        <li><strong>WRL Supervisor</strong> (07/2024 - 11/2024) - Innovate Tech, Kathmandu<br>
+            Led and mentored 4 front-end interns in React, TypeScript, and modern web technologies.</li>
+        <li><strong>QA Engineer</strong> (2019 - 2024) - Various projects including Sifu (Kung Fu Quiz)<br>
+            Developed and executed test cases, managed bug tracking, and ensured product quality.</li>
       </ul>
-    </section>
 
-    <section class="cv-section" id="experience">
-      <h2>Experience</h2>
+      <h3>Education</h3>
       <ul>
-        <li><strong>Software QA Engineer & PM</strong>, Innovate Tech (2022–Present)</li>
-        <li><strong>Project Analyst (Trainee)</strong>, InfoDevelopers</li>
-        <li><strong>Support/Marketing Roles</strong>, Innovate Tech, Webbook</li>
+        <li>Master’s Degree in Computer Science</li>
+        <li>Bachelor’s Degree in Information Technology</li>
       </ul>
-    </section>
 
-    <section class="cv-section" id="projects">
-      <h2>Projects</h2>
+      <h3>Projects</h3>
       <ul>
-        <li><strong>Kungfu Quiz (KFQ):</strong> PM + QA, feature coordination, UAT</li>
-        <li><strong>MST Platform:</strong> QA for 4 forks (Global, Nepal, Alston, Indonesia)</li>
-        <li><strong>IVy Publisher:</strong> Video interaction testing</li>
-        <li><strong>Heart Failure Detection (MSc Thesis)</strong></li>
-        <li><strong>Nepal Gadgets:</strong> E-commerce app (Undergrad)</li>
+        <li><strong>Sifu (Kung Fu Quiz)</strong> - QA and project support for a popular quiz platform.</li>
+        <li>End-user test case development and bug tracking for various web and mobile applications.</li>
       </ul>
-    </section>
 
-    <section class="cv-section" id="education">
-      <h2>Education</h2>
+      <h3>Skills</h3>
       <ul>
-        <li>MSc IT & Applied Security – Islington College (2024)</li>
-        <li>BSc (Hons) CS – Herald College (2019)</li>
-        <li>+2 in Computer Science – KMC</li>
-        <li>SLC – Buddha Jyoti Academy</li>
+        <li>Software Testing (Manual and Automation)</li>
+        <li>Test Case Design and Execution</li>
+        <li>Project Coordination and Team Leadership</li>
+        <li>Bug Tracking Tools (JIRA, Bugzilla)</li>
+        <li>Basic Front-end Development (HTML, CSS, JS)</li>
       </ul>
+
+      <a class="download-btn" href="Kush_Man_Shrestha_CV.pdf" download>
+        Download CV
+      </a>
     </section>
+  </main>
 
-    <section class="cv-section" id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:shresthakush1996@gmail.com">shresthakush1996@gmail.com</a></p>
-      <p>Phone: <a href="tel:+9779849527999">+977 9849-527999</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/kush-man-shrestha-794a53133" target="_blank">kush-man-shrestha</a></p>
-    </section>
-
-    <div class="footer">
-      <div class="footer-l">
-        <h4>2025 &copy;</h4>
-        <h4 class="time"></h4>
-      </div>
-      <div class="footer-r">
-        <a class="underline" href="mailto:shresthakush1996@gmail.com">Email</a>
-        <a class="underline" href="https://linkedin.com/in/kush-man-shrestha-794a53133">LinkedIn</a>
-        <a class="underline" href="tel:+9779849527999">Phone</a>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
-  <script src="https://kit.fontawesome.com/9317aadbca.js" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
 </body>
-
-</html>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kush Man Shrestha - Portfolio</title>
-  <link rel="icon" href="kush-photo.png">
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
-</head>
-
-<body>
-  <div class="intro">
-    <h4>Kush Man Shrestha</h4>
-    <div></div>
-    <h4 class="timer">0%</h4>
-  </div>
-
-  <div class="cursor"></div>
-
-  <div class="nav from-top-1">
-    <h3 class="from-top-1-ele underline">Kush Man Shrestha</h3>
-    <a class="from-top-1-ele menu-btn underline" href="#">MENU+</a>
-  </div>
-
-  <div class="main" id="main">
-    <!-- Hero Section (Cynthia Style) -->
-    <div class="hero">
-      <div class="heading">
-        <h1 class="from-btm-ele"><span>QUALITY</span></h1>
-        <h1 class="secondh1 from-btm-ele"><span>ASSURANCE</span></h1>
-        <h1 class="secondh1 from-btm-ele"><span>ENGINEER</span></h1>
-        <h5 class="from-btm-ele">BASED IN KATHMANDU</h5>
-      </div>
-      <div class="small-headings">
-        <h3 class="from-top-ele">AVAILABLE FOR FULL-TIME ROLES</h3>
-        <h3 class="from-top-ele"><a class="underline" href="kush-cv.pdf" download>DOWNLOAD MY CV</a></h3>
-      </div>
-    </div>
-
-    <!-- Simple CV-Like Section -->
-    <section class="cv-section" id="summary">
-      <h2>Professional Summary</h2>
-      <p>Detail-oriented Software Quality Assurance Engineer with over 3 years of experience in software testing and project coordination. Skilled in Black/White Box testing, usability, performance, and product reliability.</p>
-    </section>
-
-    <section class="cv-section" id="skills">
-      <h2>Key Skills</h2>
-      <ul>
-        <li>Testing & QA: Black Box, White Box, Regression, UAT</li>
-        <li>Tools: Git, Figma, InVision, Excel, Slack</li>
-        <li>Soft Skills: Communication, PM, Team Collaboration</li>
-        <li>Others: Requirement Gathering, Documentation, ML Basics</li>
-      </ul>
-    </section>
-
-    <section class="cv-section" id="experience">
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Software QA Engineer & PM</strong>, Innovate Tech (2022–Present)</li>
-        <li><strong>Project Analyst (Trainee)</strong>, InfoDevelopers</li>
-        <li><strong>Support/Marketing Roles</strong>, Innovate Tech, Webbook</li>
-      </ul>
-    </section>
-
-    <section class="cv-section" id="projects">
-      <h2>Projects</h2>
-      <ul>
-        <li><strong>Kungfu Quiz (KFQ):</strong> PM + QA, feature coordination, UAT</li>
-        <li><strong>MST Platform:</strong> QA for 4 forks (Global, Nepal, Alston, Indonesia)</li>
-        <li><strong>IVy Publisher:</strong> Video interaction testing</li>
-        <li><strong>Heart Failure Detection (MSc Thesis)</strong></li>
-        <li><strong>Nepal Gadgets:</strong> E-commerce app (Undergrad)</li>
-      </ul>
-    </section>
-
-    <section class="cv-section" id="education">
-      <h2>Education</h2>
-      <ul>
-        <li>MSc IT & Applied Security – Islington College (2024)</li>
-        <li>BSc (Hons) CS – Herald College (2019)</li>
-        <li>+2 in Computer Science – KMC</li>
-        <li>SLC – Buddha Jyoti Academy</li>
-      </ul>
-    </section>
-
-    <section class="cv-section" id="contact">
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:shresthakush1996@gmail.com">shresthakush1996@gmail.com</a></p>
-      <p>Phone: <a href="tel:+9779849527999">+977 9849-527999</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/kush-man-shrestha-794a53133" target="_blank">kush-man-shrestha</a></p>
-    </section>
-
-    <div class="footer">
-      <div class="footer-l">
-        <h4>2025 &copy;</h4>
-        <h4 class="time"></h4>
-      </div>
-      <div class="footer-r">
-        <a class="underline" href="mailto:shresthakush1996@gmail.com">Email</a>
-        <a class="underline" href="https://linkedin.com/in/kush-man-shrestha-794a53133">LinkedIn</a>
-        <a class="underline" href="tel:+9779849527999">Phone</a>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
-  <script src="https://kit.fontawesome.com/9317aadbca.js" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
-</body>
-
 </html>
