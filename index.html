@@ -234,81 +234,28 @@
     <h3>Professional Summary</h3>
     <p>Detail-oriented Software Quality Assurance Engineer with over 3 years of experience in software testing and project management. Skilled in leading projects, guiding teams, and improving software quality using strong testing methods. Currently handling project management tasks while also supporting QA activities—leading cross-functional teams, gathering and organizing requirements, tracking progress, and ensuring software is delivered on time and meets high standards. Proficient in both Black Box and White Box testing, with a strong focus on user experience, performance, and product reliability. Known for clear communication, attention to detail, and a strong drive for continuous improvement. </p>
 
-<section id="work-experience" style="max-width: 700px; margin: 60px auto; font-family: 'Poppins', sans-serif;">
-  <h2 style="font-weight: 700; font-size: 2rem; margin-bottom: 30px; color: #111;">Work Experience</h2>
-
-  <!-- Software QA Engineer -->
-  <div class="job">
-    <button class="job-header" aria-expanded="false" aria-controls="qa-engineer-details">
-      <div>
-        <h3 style="margin: 0; font-weight: 600; font-size: 1.2rem; color: #222;">Software QA Engineer</h3>
-        <small style="font-size: 0.9rem; color: #666;">01/2022 - Present | Innovate Tech, Kathmandu</small>
-      </div>
-      <span class="arrow" aria-hidden="true">▼</span>
-    </button>
-    <ul class="job-details" id="qa-engineer-details" hidden>
-      <li>Manage multiple web and platform-based projects, overseeing timelines, team coordination, and release management.</li>
-      <li>Facilitate sprint planning, daily stand-ups, and stakeholder meetings to ensure smooth project execution.</li>
-      <li>Coordinate with cross-functional teams including developers, designers, and QA to meet deliverables.</li>
-      <li>Design and execute test plans covering functional, regression, integration, and performance testing.</li>
-      <li>Conduct User Acceptance Testing (UAT) sessions and review final deliverables before production deployment.</li>
-      <li>Maintain project documentation including requirements, test cases, release notes, and progress trackers.</li>
-      <li>Tools used: GitLab, Figma, InVision, Google Chat, Microsoft Office Suite.</li>
-    </ul>
-  </div>
-
-  <!-- Project Business Analyst (Trainee) -->
-  <div class="job">
-    <button class="job-header" aria-expanded="false" aria-controls="business-analyst-details">
-      <div>
-        <h3 style="margin: 0; font-weight: 600; font-size: 1.2rem; color: #222;">Project Business Analyst (Trainee)</h3>
-        <small style="font-size: 0.9rem; color: #666;">Jul 2021 – Dec 2021 | InfoDevelopers Pvt. Ltd.</small>
-      </div>
-      <span class="arrow" aria-hidden="true">▼</span>
-    </button>
-    <ul class="job-details" id="business-analyst-details" hidden>
-      <li>Participated in requirement gathering and stakeholder discussions to define clear project goals.</li>
-      <li>Drafted documentation including user stories and process flows to support development and QA teams.</li>
-      <li>Helped improve communication between business and technical teams for better delivery outcomes.</li>
-    </ul>
-  </div>
-
-  <!-- Customer Service Representative -->
-  <div class="job">
-    <button class="job-header" aria-expanded="false" aria-controls="customer-service-details">
-      <div>
-        <h3 style="margin: 0; font-weight: 600; font-size: 1.2rem; color: #222;">Customer Service Representative</h3>
-        <small style="font-size: 0.9rem; color: #666;">Dec 2020 – May 2021 | Innovate Tech</small>
-      </div>
-      <span class="arrow" aria-hidden="true">▼</span>
-    </button>
-    <ul class="job-details" id="customer-service-details" hidden>
-      <li>Delivered technical assistance and product support to users via calls and chat.</li>
-      <li>Conducted user onboarding sessions and reported usability issues to the development team.</li>
-      <li>Documented user feedback and contributed to prioritizing feature improvements.</li>
-    </ul>
-  </div>
-
-  <!-- Marketing Executive & IT Support -->
-  <div class="job">
-    <button class="job-header" aria-expanded="false" aria-controls="marketing-it-details">
-      <div>
-        <h3 style="margin: 0; font-weight: 600; font-size: 1.2rem; color: #222;">Marketing Executive & IT Support</h3>
-        <small style="font-size: 0.9rem; color: #666;">Jan 2015 – Mar 2016 | Webbook</small>
-      </div>
-      <span class="arrow" aria-hidden="true">▼</span>
-    </button>
-    <ul class="job-details" id="marketing-it-details" hidden>
-      <li>Assisted hotel clients in upgrading digital systems, offering product setup and training.</li>
-      <li>Provided basic IT troubleshooting and support.</li>
-    </ul>
-  </div>
-</section>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Work Experience</title>
 <style>
+  body {
+    background-color: #121212;
+    font-family: 'Poppins', sans-serif;
+    color: #eee;
+    padding: 40px 20px;
+  }
+
+  #work-experience {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
   .job {
     margin-bottom: 25px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #333;
     padding-bottom: 15px;
   }
 
@@ -322,16 +269,26 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #eee;
+    transition: color 0.3s ease;
   }
 
   .job-header:hover {
-    color: #007bff;
+    color: #64b5f6;
+  }
+
+  .job-header span.date-company {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: #bbb;
   }
 
   .arrow {
     font-size: 1rem;
     transition: transform 0.3s ease;
+    color: #eee;
   }
 
   .job-header[aria-expanded="true"] .arrow {
@@ -342,34 +299,97 @@
     margin-top: 10px;
     padding-left: 20px;
     list-style-type: disc;
-    color: #333;
+    color: #ccc;
+    display: none;
   }
 
   .job-details li {
     margin-bottom: 8px;
   }
+
+  .job-details.show {
+    display: block;
+  }
 </style>
+</head>
+<body>
+
+<section id="work-experience">
+  <div class="job">
+    <button class="job-header" aria-expanded="false">
+      Software QA Engineer
+      <span class="date-company"> (01/2022 - Present) - Innovate Tech, Kathmandu</span>
+      <span class="arrow">▼</span>
+    </button>
+    <ul class="job-details">
+      <li>Manage multiple web and platform-based projects, overseeing timelines, team coordination, and release management.</li>
+      <li>Facilitate sprint planning, daily stand-ups, and stakeholder meetings to ensure smooth project execution.</li>
+      <li>Coordinate with cross-functional teams including developers, designers, and QA to meet deliverables.</li>
+      <li>Design and execute test plans covering functional, regression, integration, and performance testing.</li>
+      <li>Conduct User Acceptance Testing (UAT) sessions and review final deliverables before production deployment.</li>
+      <li>Maintain project documentation including requirements, test cases, release notes, and progress trackers.</li>
+      <li>Tools used: GitLab, Figma, InVision, Google Chat, Microsoft Office Suite.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <button class="job-header" aria-expanded="false">
+      Project Business Analyst (Trainee)
+      <span class="date-company"> InfoDevelopers Pvt. Ltd. | Jul 2021 – Dec 2021</span>
+      <span class="arrow">▼</span>
+    </button>
+    <ul class="job-details">
+      <li>Participated in requirement gathering and stakeholder discussions to define clear project goals.</li>
+      <li>Drafted documentation including user stories and process flows to support development and QA teams.</li>
+      <li>Helped improve communication between business and technical teams for better delivery outcomes.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <button class="job-header" aria-expanded="false">
+      Customer Service Representative
+      <span class="date-company"> Innovate Tech | Dec 2020 – May 2021</span>
+      <span class="arrow">▼</span>
+    </button>
+    <ul class="job-details">
+      <li>Delivered technical assistance and product support to users via calls and chat.</li>
+      <li>Conducted user onboarding sessions and reported usability issues to the development team.</li>
+      <li>Documented user feedback and contributed to prioritizing feature improvements.</li>
+    </ul>
+  </div>
+
+  <div class="job">
+    <button class="job-header" aria-expanded="false">
+      Marketing Executive & IT Support
+      <span class="date-company"> Webbook | Jan 2015 – Mar 2016</span>
+      <span class="arrow">▼</span>
+    </button>
+    <ul class="job-details">
+      <li>Assisted hotel clients in upgrading digital systems, offering product setup and training.</li>
+      <li>Provided basic IT troubleshooting and support.</li>
+    </ul>
+  </div>
+</section>
 
 <script>
+  // Toggle job details on header click
   document.querySelectorAll('.job-header').forEach(button => {
     button.addEventListener('click', () => {
       const expanded = button.getAttribute('aria-expanded') === 'true';
       button.setAttribute('aria-expanded', !expanded);
-      const details = document.getElementById(button.getAttribute('aria-controls'));
-      if (details) {
-        if (expanded) {
-          details.hidden = true;
-        } else {
-          details.hidden = false;
-        }
+      const details = button.nextElementSibling;
+      if (!expanded) {
+        details.classList.add('show');
+      } else {
+        details.classList.remove('show');
       }
     });
   });
 </script>
 
-      <li><strong>Project Business Analyst (Trainee)</strong> (Jul 2021 – Dec 2021) - InfoDevelopers Pvt. Ltd., Kathmandu <br>
-          Developed and executed test cases, managed bug tracking, and ensured product quality.</li>
-    </ul>
+</body>
+</html>
+
 
     <h3>Education</h3>
     <ul>
