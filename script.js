@@ -1,0 +1,1 @@
+// script.js placeholder: GSAP + Locomotive Scroll + cursor tracker
