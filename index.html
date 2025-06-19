@@ -1,437 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Kush Man Shrestha | Portfolio</title>
-<style>
-  /* Reset & base */
-  * {
-    margin: 0; padding: 0; box-sizing: border-box;
-  }
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #121212;
-    color: #eee;
-    min-height: 100vh;
-    scroll-behavior: smooth;
-  }
-  a {
-    color: #1db954;
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
+// Kush Man Shrestha Portfolio Website
+// Inspired by: https://cynthiaugwu.com
 
-  /* Animated hero section */
-  header {
-    position: relative;
-    height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #00ffc8;
-    text-align: center;
-    padding: 0 1rem;
-    overflow: hidden;
-  }
-  header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, #00ffc8aa 0%, transparent 70%);
-    animation: pulse 6s ease-in-out infinite alternate;
-    z-index: 0;
-  }
-  @keyframes pulse {
-    0% { transform: scale(1); opacity: 0.6; }
-    100% { transform: scale(1.2); opacity: 0.9; }
-  }
+import { useState } from 'react';
+import { Sun, Moon } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
-  header h1 {
-    font-size: 3.5rem;
-    font-weight: 900;
-    letter-spacing: 0.15em;
-    position: relative;
-    z-index: 1;
-    color: transparent;
-    background: linear-gradient(270deg, #00ffc8, #007eff, #00ffc8);
-    background-size: 600% 600%;
-    animation: gradientMove 8s ease infinite;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-  @keyframes gradientMove {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
+export default function Portfolio() {
+  const [darkMode, setDarkMode] = useState(true);
 
-  header .typing {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #a0f0ffcc;
-    margin-top: 0.8rem;
-    height: 2rem;
-    overflow: hidden;
-    border-right: .15em solid #00ffc8;
-    white-space: nowrap;
-    animation:
-      typing 3.5s steps(30, end),
-      blink-caret .75s step-end infinite;
-    position: relative;
-    z-index: 1;
-  }
-  @keyframes typing {
-    from { width: 0 }
-    to { width: 20ch }
-  }
-  @keyframes blink-caret {
-    50% { border-color: transparent }
-  }
+  const toggleDarkMode = () => setDarkMode(!darkMode);
 
-  header button {
-    margin-top: 2.5rem;
-    padding: 0.8rem 2.4rem;
-    border: none;
-    background: #00ffc8;
-    color: #121212;
-    font-weight: 700;
-    font-size: 1.15rem;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,255,200,0.5);
-    transition: background 0.3s ease;
-    user-select: none;
-    position: relative;
-    z-index: 1;
-  }
-  header button:hover {
-    background: #007eff;
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(0,126,255,0.7);
-  }
+  return (
+    <div className={darkMode ? 'dark bg-black text-white' : 'bg-white text-black'}>
+      {/* Dark/Light Mode Toggle */}
+      <div className="fixed top-4 right-4 z-50">
+        <Button onClick={toggleDarkMode} variant="ghost">
+          {darkMode ? <Sun /> : <Moon />}
+        </Button>
+      </div>
 
-  /* Main CV container */
-  main.container {
-    max-width: 900px;
-    margin: 3rem auto 5rem;
-    padding: 0 1rem;
-  }
+      {/* Hero Section */}
+      <section className="h-screen flex flex-col justify-center items-center text-center px-4">
+        <h1 className="text-5xl md:text-7xl font-bold animate-fade-in-up">
+          Hi, I'm Kush Man Shrestha
+        </h1>
+        <p className="text-xl mt-4 animate-fade-in-up delay-200">
+          Project Manager & QA Engineer
+        </p>
+        <div className="mt-6 flex gap-4 animate-fade-in-up delay-300">
+          <a href="/CV.pdf" download>
+            <Button>Download CV</Button>
+          </a>
+        </div>
+        <span className="mt-16 text-sm animate-bounce">Scroll ↓</span>
+      </section>
 
-  /* CV section with fade-in */
-  section.cv {
-    background: #222;
-    border-radius: 12px;
-    padding: 2.5rem 3rem;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.7);
-    color: #ddd;
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s ease;
-  }
-  section.cv.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+      {/* About Section */}
+      <section className="py-20 px-6 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-4">About Me</h2>
+        <p>
+          Detail-oriented Software QA Engineer & Project Manager with 3+ years of experience in
+          software testing, cross-functional coordination, and requirement gathering. Skilled in
+          usability testing, sprint management, and delivering quality software.
+        </p>
+      </section>
 
-  section.cv h3 {
-    color: #00ffc8;
-    border-bottom: 2px solid #00ffc8;
-    padding-bottom: 0.3rem;
-    margin-bottom: 1rem;
-    font-weight: 700;
-  }
-  section.cv p,
-  section.cv ul {
-    margin-bottom: 1.3rem;
-    line-height: 1.5;
-  }
-  section.cv ul {
-    list-style: disc inside;
-    margin-left: 1rem;
-  }
-  section.cv ul li {
-    margin-bottom: 0.5rem;
-  }
-  .contact-info {
-    margin-bottom: 2.5rem;
-    text-align: center;
-  }
-  .contact-info p {
-    font-weight: 600;
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-  }
-  .contact-info a {
-    word-break: break-all;
-  }
+      {/* Work Experience */}
+      <section className="py-20 px-6 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-6">Work Experience</h2>
+        <div className="space-y-8">
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="text-xl font-semibold">Project Manager – Innovate Tech (2025–present)</h3>
+              <ul className="list-disc ml-5 mt-2 text-sm">
+                <li>Led full lifecycle for KFQ platform features and UAT processes</li>
+                <li>Managed sprints, daily standups, and backlog tracking using GitLab</li>
+                <li>Collaborated with cross-functional teams and stakeholders</li>
+              </ul>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h3 className="text-xl font-semibold">Software QA Engineer – Innovate Tech (2024–present)</h3>
+              <ul className="list-disc ml-5 mt-2 text-sm">
+                <li>Led QA planning and execution for multiple web platforms</li>
+                <li>Conducted performance/security testing with JMeter & Burp Suite</li>
+              </ul>
+            </CardContent>
+          </Card>
+          {/* Add more experiences similarly */}
+        </div>
+      </section>
 
-  /* Download CV Button */
-  .download-btn {
-    display: inline-block;
-    background: #00ffc8;
-    color: #121212;
-    padding: 1rem 2.5rem;
-    border-radius: 50px;
-    font-weight: 700;
-    box-shadow: 0 5px 15px rgba(0,255,200,0.5);
-    transition: background 0.3s ease;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    user-select: none;
-    margin-top: 2rem;
-  }
-  .download-btn:hover {
-    background: #007eff;
-    color: #fff;
-    box-shadow: 0 10px 30px rgba(0,126,255,0.7);
-  }
+      {/* Projects */}
+      <section className="py-20 px-6 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-6">Projects</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          <Card>
+            <CardContent className="p-4">
+              <h4 className="font-bold">Kungfu Quiz (KFQ)</h4>
+              <p className="text-sm mt-1">Managed entire platform lifecycle & UAT. Proposed AI feature ideas.</p>
+              <a className="text-blue-500 text-sm mt-2 inline-block" href="https://www.kungfuquiz.com/">Visit</a>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-4">
+              <h4 className="font-bold">My Second Teacher (MST)</h4>
+              <p className="text-sm mt-1">Led QA across forks of MST and back-office (Apollo).</p>
+              <a className="text-blue-500 text-sm mt-2 inline-block" href="https://mysecondteacher.com/">Visit</a>
+            </CardContent>
+          </Card>
+          {/* Add more projects */}
+        </div>
+      </section>
 
-  /* Responsive */
-  @media (max-width: 600px) {
-    header h1 {
-      font-size: 2.5rem;
-      letter-spacing: 0.1em;
-    }
-    header .typing {
-      font-size: 1.2rem;
-      height: 1.8rem;
-    }
-    main.container {
-      margin: 2rem auto 4rem;
-      padding: 0 1rem;
-    }
-    section.cv {
-      padding: 2rem 1.5rem;
-    }
-  }
-</style>
-</head>
-<body>
+      {/* Skills */}
+      <section className="py-20 px-6 max-w-4xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-6">Skills</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+          <span className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">Black/White Box Testing</span>
+          <span className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">Performance Testing</span>
+          <span className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">GitLab</span>
+          <span className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">Project Management</span>
+          <span className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">JMeter</span>
+          <span className="bg-gray-200 dark:bg-gray-700 rounded px-2 py-1">Figma/InVision</span>
+          {/* Add more tags */}
+        </div>
+      </section>
 
-<header>
-  <h1>Kush Man Shrestha</h1>
-  <div class="typing">Software QA Engineer</div>
-  <button onclick="document.getElementById('cv-section').scrollIntoView({behavior:'smooth'})">
-    Professional Overview
-  </button>
-</header>
+      {/* Education */}
+      <section className="py-20 px-6 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-semibold mb-6">Education & Certifications</h2>
+        <ul className="space-y-4 text-sm">
+          <li><strong>MSc in IT & Applied Security</strong> – Islington College (2024)</li>
+          <li><strong>BSc (Hons) Computer Science</strong> – Herald College (2019)</li>
+          <li><strong>+2 in Computer Science</strong> – Kathmandu Model College (2014)</li>
+        </ul>
+      </section>
 
-<main class="container" id="cv-section">
-  <section class="cv">
-    <div class="contact-info">
-      <p><strong>Address:</strong> Chokhachai Galli, Ward No. 24, Indrachowk, Kathmandu, Nepal</p>
-      <p><strong>Mobile:</strong> (+977) 9849-527999</p>
-      <p><strong>Email:</strong> <a href="mailto:shresthakush1996@gmail.com">shresthakush1996@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/kush-man-shrestha-/" target="_blank" rel="noopener">LinkedIn Profile</a></p>
+      {/* Contact */}
+      <section className="py-20 px-6 max-w-xl mx-auto text-center">
+        <h2 className="text-3xl font-semibold mb-6">Get in Touch</h2>
+        <p>Email: <a href="mailto:sthakush@gmail.com" className="text-blue-500">sthakush@gmail.com</a></p>
+        <p>Phone: <a href="tel:9849527999" className="text-blue-500">9849527999</a></p>
+        <div className="flex justify-center gap-6 mt-4">
+          <a href="https://linkedin.com/in/kush-man-shrestha-794a53133" className="text-blue-500">LinkedIn</a>
+          <a href="https://www.innovatetech.io/" className="text-blue-500">Innovate Tech</a>
+        </div>
+      </section>
 
-    <h3>Professional Summary</h3>
-    <p>Detail-oriented Software Quality Assurance Engineer with over 3 years of experience in software testing and project management. Skilled in leading projects, guiding teams, and improving software quality using strong testing methods. Currently handling project management tasks while also supporting QA activities—leading cross-functional teams, gathering and organizing requirements, tracking progress, and ensuring software is delivered on time and meets high standards. Proficient in both Black Box and White Box testing, with a strong focus on user experience, performance, and product reliability. Known for clear communication, attention to detail, and a strong drive for continuous improvement. </p>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Work Experience</title>
-<style>
-  body {
-    background-color: #121212;
-    font-family: 'Poppins', sans-serif;
-    color: #eee;
-    padding: 40px 20px;
-  }
-
-  #work-experience {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
-  .job {
-    margin-bottom: 25px;
-    border-bottom: 1px solid #333;
-    padding-bottom: 15px;
-  }
-
-  .job-header {
-    background: none;
-    border: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-    padding: 10px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: #eee;
-    transition: color 0.3s ease;
-  }
-
-  .job-header:hover {
-    color: #64b5f6;
-  }
-
-  .job-header span.date-company {
-    font-weight: 400;
-    font-size: 0.9rem;
-    color: #bbb;
-  }
-
-  .arrow {
-    font-size: 1rem;
-    transition: transform 0.3s ease;
-    color: #eee;
-  }
-
-  .job-header[aria-expanded="true"] .arrow {
-    transform: rotate(180deg);
-  }
-
-  .job-details {
-    margin-top: 10px;
-    padding-left: 20px;
-    list-style-type: disc;
-    color: #ccc;
-    display: none;
-  }
-
-  .job-details li {
-    margin-bottom: 8px;
-  }
-
-  .job-details.show {
-    display: block;
-  }
-</style>
-</head>
-<body>
-
-<section id="work-experience">
-  <div class="job">
-    <button class="job-header" aria-expanded="false">
-      Software QA Engineer
-      <span class="date-company"> (01/2022 - Present) - Innovate Tech, Kathmandu</span>
-      <span class="arrow">▼</span>
-    </button>
-    <ul class="job-details">
-      <li>Manage multiple web and platform-based projects, overseeing timelines, team coordination, and release management.</li>
-      <li>Facilitate sprint planning, daily stand-ups, and stakeholder meetings to ensure smooth project execution.</li>
-      <li>Coordinate with cross-functional teams including developers, designers, and QA to meet deliverables.</li>
-      <li>Design and execute test plans covering functional, regression, integration, and performance testing.</li>
-      <li>Conduct User Acceptance Testing (UAT) sessions and review final deliverables before production deployment.</li>
-      <li>Maintain project documentation including requirements, test cases, release notes, and progress trackers.</li>
-      <li>Tools used: GitLab, Figma, InVision, Google Chat, Microsoft Office Suite.</li>
-    </ul>
-  </div>
-
-  <div class="job">
-    <button class="job-header" aria-expanded="false">
-      Project Business Analyst (Trainee)
-      <span class="date-company"> InfoDevelopers Pvt. Ltd. | Jul 2021 – Dec 2021</span>
-      <span class="arrow">▼</span>
-    </button>
-    <ul class="job-details">
-      <li>Participated in requirement gathering and stakeholder discussions to define clear project goals.</li>
-      <li>Drafted documentation including user stories and process flows to support development and QA teams.</li>
-      <li>Helped improve communication between business and technical teams for better delivery outcomes.</li>
-    </ul>
-  </div>
-
-  <div class="job">
-    <button class="job-header" aria-expanded="false">
-      Customer Service Representative
-      <span class="date-company"> Innovate Tech | Dec 2020 – May 2021</span>
-      <span class="arrow">▼</span>
-    </button>
-    <ul class="job-details">
-      <li>Delivered technical assistance and product support to users via calls and chat.</li>
-      <li>Conducted user onboarding sessions and reported usability issues to the development team.</li>
-      <li>Documented user feedback and contributed to prioritizing feature improvements.</li>
-    </ul>
-  </div>
-
-  <div class="job">
-    <button class="job-header" aria-expanded="false">
-      Marketing Executive & IT Support
-      <span class="date-company"> Webbook | Jan 2015 – Mar 2016</span>
-      <span class="arrow">▼</span>
-    </button>
-    <ul class="job-details">
-      <li>Assisted hotel clients in upgrading digital systems, offering product setup and training.</li>
-      <li>Provided basic IT troubleshooting and support.</li>
-    </ul>
-  </div>
-</section>
-
-<script>
-  // Toggle job details on header click
-  document.querySelectorAll('.job-header').forEach(button => {
-    button.addEventListener('click', () => {
-      const expanded = button.getAttribute('aria-expanded') === 'true';
-      button.setAttribute('aria-expanded', !expanded);
-      const details = button.nextElementSibling;
-      if (!expanded) {
-        details.classList.add('show');
-      } else {
-        details.classList.remove('show');
-      }
-    });
-  });
-</script>
-
-</body>
-</html>
-
-
-    <h3>Education</h3>
-    <ul>
-      <li>Master’s Degree in Computer Science</li>
-      <li>Bachelor’s Degree in Information Technology</li>
-    </ul>
-
-    <h3>Projects</h3>
-    <ul>
-      <li><strong>Sifu (Kung Fu Quiz)</strong> - QA and project support for a popular quiz platform.</li>
-      <li>End-user test case development and bug tracking for various web and mobile applications.</li>
-    </ul>
-
-    <h3>Skills</h3>
-    <ul>
-      <li>Software Testing (Manual and Automation)</li>
-      <li>Test Case Design and Execution</li>
-      <li>Project Coordination and Team Leadership</li>
-      <li>Bug Tracking Tools (JIRA, Bugzilla)</li>
-      <li>Basic Front-end Development (HTML, CSS, JS)</li>
-    </ul>
-
-    <a class="download-btn" href="Kush_Man_Shrestha_CV.pdf" download>
-      Download CV
-    </a>
-  </section>
-</main>
-
-<script>
-  // Fade-in on scroll for CV section
-  const cvSection = document.querySelector('.cv');
-  function checkVisible() {
-    const rect = cvSection.getBoundingClientRect();
-    if (rect.top < window.innerHeight - 100) {
-      cvSection.classList.add('visible');
-      window.removeEventListener('scroll', checkVisible);
-    }
-  }
-  window.addEventListener('scroll', checkVisible);
-  // Run on load
-  checkVisible();
-</script>
-
-</body>
-</html>
+      <footer className="text-center py-6 text-xs opacity-70">
+        © {new Date().getFullYear()} Kush Man Shrestha. All rights reserved.
+      </footer>
+    </div>
+  );
+}
